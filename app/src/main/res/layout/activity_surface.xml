@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ListView
-        android:id="@+id/list"
+    <com.zcl.audiovideo.view.MySurfaceViw
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
