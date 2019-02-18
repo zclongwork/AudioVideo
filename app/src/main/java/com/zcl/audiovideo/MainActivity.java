@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, SurfaceViewActivity.class);
                     startActivity(intent);
                     break;
+                case 1:
+                    startActivity(new Intent(MainActivity.this, AudioActivity.class));
+                    break;
                 default:
                     break;
                 }
