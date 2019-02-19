@@ -36,17 +36,21 @@ public class WaveUtil {
             return false;
         }
         TOTAL_SIZE = (int) file.length();
-        // 填入参数，比特率等等。这里用的是16位单声道 8000 hz
+        // 填入参数，比特率等等。
         
         WaveHeader header = new WaveHeader();
         // 长度字段 = 内容的大小（TOTAL_SIZE) +
         // 头部字段的大小(不包括前面4字节的标识符RIFF以及fileLength本身的4字节)
         header.fileLength = TOTAL_SIZE + (44 - 8);
+        
+        
         header.FmtHdrLeth = 16;
         header.BitsPerSample = 16;
         header.Channels = 2;
+        
+        //格式种类 1表示数据为线性PCM编码
         header.FormatTag = 0x0001;
-        header.SamplesPerSec = 8000;
+        header.SamplesPerSec = 44100;
         header.BlockAlign = (short) (header.Channels * header.BitsPerSample / 8);
         header.AvgBytesPerSec = header.BlockAlign * header.SamplesPerSec;
         header.DataHdrLeth = TOTAL_SIZE;

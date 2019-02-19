@@ -6,22 +6,56 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <Button
-        android:id="@+id/bt_record"
+        android:id="@+id/bt_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:padding="8dp"
+        android:text="检查权限"
+        />
+
+    <Button
+        android:id="@+id/bt_record_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_check"
         android:layout_marginLeft="10dp"
         android:padding="8dp"
         android:text="录音"
         />
 
     <Button
-        android:id="@+id/bt_play"
-        android:layout_toRightOf="@id/bt_record"
+        android:id="@+id/bt_record_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_record_start"
+        android:layout_marginLeft="10dp"
+        android:padding="8dp"
+        android:text="停止"
+        />
+
+
+    <Button
+        android:id="@+id/bt_change"
+        android:layout_toRightOf="@id/bt_record_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="8dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="30dp"
+        android:text="pcm-->wav"
+        />
+
+
+    <Button
+        android:id="@+id/bt_play"
+        android:layout_toRightOf="@id/bt_record_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_change"
+        android:padding="8dp"
+        android:layout_marginLeft="30dp"
         android:text="播放"
         />
 

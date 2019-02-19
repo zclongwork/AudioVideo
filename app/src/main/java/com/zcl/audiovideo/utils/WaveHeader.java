@@ -10,10 +10,10 @@ import java.io.IOException;
  */
 public class WaveHeader {
     
-    public final char fileID[] = {'R', 'I', 'F', 'F'};
+    private final char fileID[] = {'R', 'I', 'F', 'F'};
     public int fileLength;
-    public char wavTag[] = {'W', 'A', 'V', 'E'};;
-    public char FmtHdrID[] = {'f', 'm', 't', ' '};
+    private char wavTag[] = {'W', 'A', 'V', 'E'};;
+    private char FmtHdrID[] = {'f', 'm', 't', ' '};
     public int FmtHdrLeth;
     public short FormatTag;
     public short Channels;
@@ -21,23 +21,33 @@ public class WaveHeader {
     public int AvgBytesPerSec;
     public short BlockAlign;
     public short BitsPerSample;
-    public char DataHdrID[] = {'d','a','t','a'};
+    private char DataHdrID[] = {'d','a','t','a'};
     public int DataHdrLeth;
     
     public byte[] getHeader() throws IOException {
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         WriteChar(bos, fileID);
+        //从下个地址开始到文件尾的总字节数
         WriteInt(bos, fileLength);
         WriteChar(bos, wavTag);
         WriteChar(bos, FmtHdrID);
         WriteInt(bos,FmtHdrLeth);
+        
+        //格式种类
         WriteShort(bos,FormatTag);
+        //单声道1 双声道2
         WriteShort(bos,Channels);
+        //采样频率
         WriteInt(bos,SamplesPerSec);
+        //每秒数据量；其值为通道数×每秒数据位数×每样本的数据位数／8
         WriteInt(bos,AvgBytesPerSec);
+        //数据块的调整数（按字节算的），其值为通道数×每样本的数据位值／8
         WriteShort(bos,BlockAlign);
+        //每个样本的数据位数 就是位深度
         WriteShort(bos,BitsPerSample);
+        
         WriteChar(bos,DataHdrID);
+        //采样数据总数
         WriteInt(bos,DataHdrLeth);
         bos.flush();
         byte[] r = bos.toByteArray();
